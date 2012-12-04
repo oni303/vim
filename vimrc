@@ -98,6 +98,8 @@ inoremap <S-Space> <Esc>
 
 "map \m to :w + :make
 nnoremap <Leader>m :w<cr>:make<cr>
+"\p for :Project
+nnoremap <Leader> :Project<cr>
 
 hi cCustomFunc cterm=bold guifg=DarkGreen gui=bold
 hi cCustomClass ctermfg=2 gui=bold guifg=#60ff60
