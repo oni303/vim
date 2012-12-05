@@ -32,6 +32,9 @@ set ofu=syntaxcomplete#Complete
 set completeopt=longest,menuone,menu
 set pumheight=15
 
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+set relativenumber
 
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
