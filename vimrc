@@ -73,7 +73,7 @@ set incsearch		" Incremental search
 "set hidden             " Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes) in terminals
 
-let g:languagetool_jar=$HOME . '/.vim/LanguageTool/LanguageTool.jar'
+let g:languagetool_jar=$HOME . '/.vim/LanguageTool/languagetool-commandline.jar'
 let g:languagetool_lang='de-DE'
 map <F7> :LanguageToolCheck
 map <F8> :LanguageToolClear
@@ -120,22 +120,24 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-nnoremap <silent> <buffer> <F5> :CSearchContext -s project -x declarations<cr>
-let g:acp_behaviorCEclimLength = 3
-function MeetsForCEclim(context)
-	  return g:acp_behaviorCEclimLength >= 0 &&
-	          \ (a:context =~ '\k\.\k\{0,}$' || a:context =~ '\k\->\k\{0,}$')
-  endfunction
-function MeetsForC(context)
-	return (a:context =~ '\k\{3,}$')
-endfunction
-  let g:acp_behavior = {
-      \ 'c': [{
-          \ 'command': "\<c-x>\<c-u>",
-          \ 'completefunc' : 'eclim#c#complete#CodeComplete',
-          \ 'meets'        : 'MeetsForCEclim',
-        \ }, {
-        \ 'command': "\<c-x>\<c-n>",
-        \ 'meets'        : 'MeetsForC',
-      \ }]
-    \ }
+"nnoremap <silent> <buffer> <F7> :CSearch -s project -x declarations<cr>
+"nnoremap <silent> <buffer> <F6> :CSearchContext<cr>
+
+"let g:acp_behaviorCEclimLength = 2
+"function MeetsForCEclim(context)
+"	  return g:acp_behaviorCEclimLength >= 0 &&
+"	          \ (a:context =~ '\k\.\k\{0,}$' || a:context =~ '\k\->\k\{0,}$' || a:context =~ '\k\{6,}$')
+"  endfunction
+"function MeetsForC(context)
+"	return (a:context =~ '\k\{2,}$')
+"endfunction
+"  let g:acp_behavior = {
+"      \ 'c': [{
+"          \ 'command': "\<c-x>\<c-u>",
+"          \ 'completefunc' : 'eclim#c#complete#CodeComplete',
+"          \ 'meets'        : 'MeetsForCEclim',
+"        \ }, {
+"        \ 'command': "\<c-x>\<c-n>",
+"        \ 'meets'        : 'MeetsForC',
+"      \ }]
+"    \ }
